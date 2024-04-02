@@ -17,7 +17,9 @@ public class EventController {
     private ExhibitionRegistrationService registrationService;
 
     @PostMapping("/register")
-    public ResponseEntity<ExhibitionEventRegistration> register(@RequestBody RegistrationRequest request){
+    public ResponseEntity<ExhibitionEventRegistration> register(@RequestBody RegistrationRequest request,
+                                                                 @RequestHeader("Authorization")String jwt){
+
         ExhibitionEventRegistration registration = registrationService.register(request);
         return new ResponseEntity<>(registration, HttpStatus.CREATED);
     }
@@ -28,8 +30,9 @@ public class EventController {
         return new ResponseEntity<>(allCustomers,HttpStatus.OK);
     }
 
-    @GetMapping("/customer")
-    public ResponseEntity<ExhibitionEventRegistration> getUser(@RequestBody String email){
+    @GetMapping("/customer/{email}")
+    public ResponseEntity<ExhibitionEventRegistration> getUser(@PathVariable String email,
+                                                                @RequestHeader("Authorization")String jwt){
         ExhibitionEventRegistration event = registrationService.findRegisteredUser(email);
         return new ResponseEntity<>(event,HttpStatus.OK);
     }

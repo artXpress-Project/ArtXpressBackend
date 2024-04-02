@@ -42,7 +42,6 @@ public class ExhibitionRegistrationServiceImpl implements ExhibitionRegistration
 
     @Override
     public ExhibitionEventRegistration findRegisteredUser(String email) {
-
         return eventVerification.findByEmail(email);
     }
 }
