@@ -36,17 +36,17 @@ public class ArtStudio {
     private String openingHours;
 
 
-    @OneToMany(mappedBy = "artStudio",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "artStudio",cascade = CascadeType.ALL, orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Order> orderList = new ArrayList<>();
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     @Column(length = 1000)
     private List<String> images;
 
     private LocalDateTime registrationDate = LocalDateTime.now();
 
     @JsonIgnore
-    @OneToMany(mappedBy = "artStudio",cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "artStudio",cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER)
     private List<Artwork> artworks = new ArrayList<>();
 
 }

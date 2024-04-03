@@ -40,7 +40,7 @@ public class ArtStudioCollectorController {
 
     ){
         User user = userService.findUserByJwt(jwt);
-       List<ArtStudio> artStudio = artStudioService.getAllRestaurant();
+       List<ArtStudio> artStudio = artStudioService.getAllArtStudio();
         return new ResponseEntity<>(artStudio, HttpStatus.OK);
     }
 

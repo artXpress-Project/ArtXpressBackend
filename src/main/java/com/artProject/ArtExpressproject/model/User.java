@@ -38,13 +38,13 @@ public class User {
     private USER_ROLE role=USER_ROLE.ROLE_COLLECTOR;
 
     @JsonIgnore
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     private List<Order> orders = new ArrayList<>();
 
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<ArtStudioDto> favorites = new ArrayList<>();
 
-    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true )
+    @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true,fetch = FetchType.EAGER )
     private List<Address> address = new ArrayList<>();
 
     private LocalDate date = LocalDate.now();

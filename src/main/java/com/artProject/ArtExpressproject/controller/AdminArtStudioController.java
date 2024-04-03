@@ -53,7 +53,7 @@ public class AdminArtStudioController {
                                                      @RequestHeader("Authorization") String jwt,
                                                      @PathVariable Long id){
         User user = userService.findUserByJwt(jwt);
-        ArtStudio artStudio = artStudioService.updateRestaurantStatus(id);
+        ArtStudio artStudio = artStudioService.updateArtStudioStatus(id);
         return new ResponseEntity<>(artStudio, HttpStatus.OK);
     }
 

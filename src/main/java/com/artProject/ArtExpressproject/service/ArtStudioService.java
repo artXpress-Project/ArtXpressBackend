@@ -14,7 +14,7 @@ public interface ArtStudioService {
 
     void deleteArtStudio(Long artStudioId);
 
-    List<ArtStudio> getAllRestaurant();
+    List<ArtStudio> getAllArtStudio();
 
     public List<ArtStudio> searchArtStudio(String keyword);
 
@@ -24,6 +24,6 @@ public interface ArtStudioService {
 
     ArtStudioDto addFavorites(Long artStudioId, User user);
 
-    ArtStudio updateRestaurantStatus(Long id);
+    ArtStudio updateArtStudioStatus(Long id);
 
 }

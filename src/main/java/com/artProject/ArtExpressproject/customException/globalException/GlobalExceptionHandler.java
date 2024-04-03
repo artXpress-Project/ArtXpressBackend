@@ -1,10 +1,9 @@
 package com.artProject.ArtExpressproject.customException.globalException;
 
 
-import com.artProject.ArtExpressproject.customException.AlreadyExistException;
-import com.artProject.ArtExpressproject.customException.EmailNotFoundException;
-import com.artProject.ArtExpressproject.customException.NotFoundException;
-import com.artProject.ArtExpressproject.customException.OrderException;
+import com.artProject.ArtExpressproject.customException.*;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -40,6 +39,30 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(OrderException.class)
     public Map<String,String> handleUserException(OrderException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("ErrorMessage", exception.getMessage());
+        return errorMap;
+
+    }
+
+    @ExceptionHandler(InvalidEmailException.class)
+    public Map<String,String> handleInvalidEmailException(InvalidEmailException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("ErrorMessage", exception.getMessage());
+        return errorMap;
+
+    }
+
+    @ExceptionHandler(BadCredentialsException.class)
+    public Map<String,String> badCredentialException(BadCredentialsException exception){
+        Map<String, String> errorMap = new HashMap<>();
+        errorMap.put("ErrorMessage", exception.getMessage());
+        return errorMap;
+
+    }
+
+    @ExceptionHandler(UsernameNotFoundException.class)
+    public Map<String,String> UserNameNotFoundException(UsernameNotFoundException exception){
         Map<String, String> errorMap = new HashMap<>();
         errorMap.put("ErrorMessage", exception.getMessage());
         return errorMap;

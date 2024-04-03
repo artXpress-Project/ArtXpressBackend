@@ -63,7 +63,10 @@ public class ArtStudioServiceImpl implements ArtStudioService {
 
     private void updateContactAndAddressInfo(ArtStudio artStudio, CreateArtStudioRequest updateRequest){
         if(artStudio.getContactInformation() != null)artStudio.setContactInformation(updateRequest.getContactInformation());
-        if(artStudio.getAddress() != null) artStudio.setAddress(updateRequest.getAddress());
+
+        if(artStudio.getAddress() != null) {
+            artStudio.setAddress(updateRequest.getAddress());}
+
 
     }
 
@@ -76,7 +79,7 @@ public class ArtStudioServiceImpl implements ArtStudioService {
     }
 
     @Override
-    public List<ArtStudio> getAllRestaurant() {
+    public List<ArtStudio> getAllArtStudio() {
         return artStudioRepository.findAll();
     }
 
@@ -98,14 +101,14 @@ public class ArtStudioServiceImpl implements ArtStudioService {
     @Override
     public ArtStudioDto addFavorites(Long artStudioId, User user) {
         ArtStudio artStudio =findArtStudioById(artStudioId);
-        ArtStudioDto dto = createRestaurantDto(artStudioId,artStudio);
+        ArtStudioDto dto = createArtstudioDto(artStudioId,artStudio);
         updateFavourites(user,dto);
 
 
         return dto;
     }
 
-    private ArtStudioDto createRestaurantDto(Long artStudioId, ArtStudio artStudio) {
+    private ArtStudioDto createArtstudioDto(Long artStudioId, ArtStudio artStudio) {
         ArtStudioDto dto = new ArtStudioDto();
         dto.setDescription(artStudio.getDescription());
         dto.setImages(artStudio.getImages());
@@ -134,7 +137,7 @@ public class ArtStudioServiceImpl implements ArtStudioService {
 
 
     @Override
-    public ArtStudio updateRestaurantStatus(Long id) {
+    public ArtStudio updateArtStudioStatus(Long id) {
         ArtStudio artStudio = findArtStudioById(id);
         artStudio.setOpen(!artStudio.isOpen());
         return artStudioRepository.save(artStudio);

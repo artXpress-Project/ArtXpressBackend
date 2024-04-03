@@ -33,7 +33,7 @@ public class ArtStudioVerificationService {
 
     public ArtStudio findArtStudioById(Long id){
         Optional<ArtStudio> artStudio = artStudioRepository.findById(id);
-        if(artStudio.isEmpty()) throw new NotFoundException("Invalid Restaurant");
+        if(artStudio.isEmpty()) throw new NotFoundException("does not exist....");
         else return artStudio.get();
 
     }

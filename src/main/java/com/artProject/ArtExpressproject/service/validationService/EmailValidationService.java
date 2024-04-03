@@ -2,6 +2,7 @@ package com.artProject.ArtExpressproject.service.validationService;
 
 import com.artProject.ArtExpressproject.customException.AlreadyExistException;
 import com.artProject.ArtExpressproject.customException.EmailNotFoundException;
+import com.artProject.ArtExpressproject.customException.InvalidEmailException;
 import com.artProject.ArtExpressproject.model.User;
 import com.artProject.ArtExpressproject.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +24,7 @@ public class EmailValidationService {
         String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
         Pattern pattern = Pattern.compile(emailRegex);
         Matcher matcher = pattern.matcher(email);
-        if(!matcher.matches()) throw new EmailNotFoundException("Invalid email");
+        if(!matcher.matches()) throw new InvalidEmailException("Invalid email");
 
 
     }
@@ -37,7 +38,7 @@ public class EmailValidationService {
     public User findEmail(String email){
         User findEmail = userRepository.findByEmail(email);
         if(findEmail == null){
-            throw new NullPointerException("Email does not exist");
+            throw new EmailNotFoundException("Email does not exist");
         }
         return findEmail;
     }
