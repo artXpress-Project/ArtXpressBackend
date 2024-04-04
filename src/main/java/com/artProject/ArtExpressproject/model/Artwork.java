@@ -42,6 +42,9 @@ public class Artwork {
 
     private LocalTime time;
 
+    @OneToMany
+    private List<Review> reviews;
+
 
 
 
