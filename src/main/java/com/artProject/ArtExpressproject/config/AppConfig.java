@@ -43,7 +43,8 @@ public class AppConfig {
             CorsConfiguration cfg = new CorsConfiguration();
             cfg.setAllowedOrigins(Arrays.asList(
                     "http://localhost:3000",
-                    "https://ArtXpress.render.com"
+                    "https://ArtXpress.render.com",
+                    "https://artxpressfontend-d914.onrender.com"
             ));
             cfg.setAllowedMethods(Collections.singletonList("*"));
             cfg.setAllowCredentials(true);
