@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -22,9 +23,9 @@ public class GenreVerification {
     private ArtStudioService artStudioService;
 
     public List<Genre> findByArtStudioId(Long id) {
-        ArtStudio artStudio = artStudioService.getArtStudioByUserId(id);
-        List<Genre> genres = genreRepository.findALLGenreByArtStudioId(artStudio.getId());
-        if(genres.isEmpty()) throw new NotFoundException("Genre Not found with the id");
+//        ArtStudio artStudio = artStudioService.getArtStudioByUserId(id);
+        List<Genre> genres = genreRepository.findALLGenreByArtStudioId(id);
+        if(genres.isEmpty()) return new ArrayList<>();
         else return genres;
      }
 

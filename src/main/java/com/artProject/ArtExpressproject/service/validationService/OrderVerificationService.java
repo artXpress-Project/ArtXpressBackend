@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -19,14 +20,14 @@ public class OrderVerificationService {
 
     public List<Order> getUserOrder(Long userId){
         List<Order> orders = orderRepository.findByCollectorId(userId);
-        if(orders.isEmpty()) throw new NotFoundException("Orders not found");
+        if(orders.isEmpty()) return new ArrayList<>();
         else return orders;
 
     }
 
     public List<Order> getArtStudioOrder(Long artStudioId){
         List<Order> orders = orderRepository.findByArtStudioId(artStudioId);
-        if(orders.isEmpty()) throw new NotFoundException("No orders made yet");
+        if(orders.isEmpty()) return new ArrayList<>();
         else return orders;
 
     }

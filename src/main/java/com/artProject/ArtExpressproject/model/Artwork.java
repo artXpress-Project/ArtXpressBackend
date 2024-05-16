@@ -25,8 +25,8 @@ public class Artwork {
 
     private Long price;
 
-    @JoinColumn(nullable = false)
-    @ManyToOne(cascade = CascadeType.REMOVE)
+
+    @ManyToOne
     private Genre genre;
 
     @Column(length = 1000)

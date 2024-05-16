@@ -29,7 +29,7 @@ public class AdminArtworkController {
     public ResponseEntity<Artwork> createArtwork(@RequestBody CreateArtWorkRequest request,
                                                  @RequestHeader("Authorization") String jwt){
         User user = userService.findUserByJwt(jwt);
-        ArtStudio artStudio = artStudioService.findArtStudioById(request.getArtStudioId());
+        ArtStudio artStudio = artStudioService.findArtStudioById(user.getId());
         Artwork artwork = artWorkService.createArtwork(request,request.getGenre(),artStudio);
         return new ResponseEntity<>(artwork, HttpStatus.CREATED);
 

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.validation.annotation.Validated;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,7 +22,7 @@ public class ArtworkVerification {
 
     public List<Artwork> findByArtStudioId(Long id){
        List<Artwork> artwork = artworkRepository.findByArtStudioId(id);
-       if(artwork.isEmpty()) throw new NotFoundException("artwork not found");
+       if(artwork.isEmpty()) return new ArrayList<>();
        else return artwork;
 
     }
